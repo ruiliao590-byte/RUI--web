@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@layer base {
+  :root,
+  [data-theme="book"],
+  [data-theme="newspaper"] {
+    --background: #fcfbf8; /* Inspired by lynnandtonic.com */
+    --foreground: #3a3a3a;
+    --primary: #a38f79;
+    --secondary: #c7b8a8;
+    --accent: #8b7e6a;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+  }
+}
