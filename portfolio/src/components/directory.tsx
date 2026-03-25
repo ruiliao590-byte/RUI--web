@@ -9,7 +9,7 @@ const sections = [
   { id: "archive", title: "归档", page: "IV" },
 ];
 
-export function Directory({ onSectionSelect }) {
+export function Directory({ onSectionSelect }: { onSectionSelect: (sectionId: string) => void }) {
   return (
     <nav className="font-serif w-full max-w-xl">
       <ul className="flex flex-col items-center space-y-4">
