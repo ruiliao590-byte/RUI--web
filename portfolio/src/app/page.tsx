@@ -5,7 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
-const sections = {
+interface Section {
+  title: string;
+  content: React.ReactNode;
+}
+
+const sections: { [key: string]: Section } = {
   about: {
     title: "I. 关于",
     content: (
@@ -51,7 +56,7 @@ const sections = {
 };
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState(null);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const { theme } = useTheme();
   const [isMounted, setIsMounted] = useState(false);
 
