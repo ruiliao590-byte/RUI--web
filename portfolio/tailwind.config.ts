@@ -22,7 +22,7 @@ const config: Config = {
     },
   },
   plugins: [
-    function ({ addUtilities }) {
+    function ({ addUtilities }: { addUtilities: (utilities: any) => void }) {
       addUtilities({
         '.scroll-smooth': {
           'scroll-behavior': 'smooth',

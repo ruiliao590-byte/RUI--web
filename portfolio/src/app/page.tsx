@@ -64,7 +64,7 @@ export default function Home() {
     setIsMounted(true);
   }, []);
 
-  const handleSectionSelect = (sectionId: any) => {
+  const handleSectionSelect = (sectionId: string) => {
     setActiveSection(sectionId);
   };
 
