@@ -168,6 +168,35 @@ const sections: { [key: string]: Section } = {
             </div>
           </dl>
         </div>
+
+        <hr className="border-t-2 border-dotted border-foreground/20 my-12" />
+
+        <div>
+          <h3 className="text-2xl font-bold mb-6">项目经历</h3>
+          <div className="space-y-10">
+            <div>
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+                <h4 className="text-xl font-bold">AI 标注团队全流程管理 Agent 工作流</h4>
+                <div className="text-sm text-foreground/70">Agent 工作流架构师 / AI 训练师</div>
+              </div>
+              <ul className="mt-4 space-y-2 list-disc pl-6 text-foreground/80 text-base leading-relaxed">
+                <li>从 0 到 1 搭建 E2E 标注管理工作流，日均稳定处理 1500+ 条标注任务，跑通「需求承接→规则文档→试标培训→过程管理→项目复盘」全链路 AI 辅助闭环。</li>
+                <li>针对高并发下 Agent 输出乱码与幻觉问题，优化 API 编码规范、引入上下文截断机制，有效提升模型回复结构稳定性。</li>
+              </ul>
+            </div>
+            <div>
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+                <h4 className="text-xl font-bold">AI 效率工具生态与全栈独立开发实践</h4>
+                <div className="text-sm text-foreground/70">独立开发者 / AI 前沿创作者</div>
+              </div>
+              <ul className="mt-4 space-y-2 list-disc pl-6 text-foreground/80 text-base leading-relaxed">
+                <li>独立开发网页自动预打标插件，减少冗余复制粘贴操作，将整体标注效率提升约 50%。</li>
+                <li>以 Vibe Coding 范式独立开发并上线独立游戏、学习路径网站及个人专属网站，完成 GitHub 全流程自动化部署。</li>
+                <li>AI 技术实战沉淀：持续追踪前沿动态并产出深度文档，具备极强的技术调研、方案拆解与工程落地闭环能力。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     ),
   },
