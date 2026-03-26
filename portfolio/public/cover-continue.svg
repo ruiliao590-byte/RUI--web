@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="c" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#c)"/>
+  <g fill="none" stroke="#60a5fa" stroke-width="10" opacity="0.9">
+    <path d="M160 560c120-200 240-200 360 0"/>
+    <path d="M520 560c90-160 180-160 270 0"/>
+  </g>
+  <g fill="none" stroke="#60a5fa" stroke-width="18" opacity="0.8">
+    <path d="M880 250l120 120l-120 120"/>
+  </g>
+  <text x="60" y="120" fill="#e5e7eb" font-size="88" font-family="Arial Black, Arial" letter-spacing="1">Continue</text>
+  <text x="60" y="180" fill="#9ca3af" font-size="36" font-family="Arial">Open-source AI Coding Assistant for VS Code</text>
+</svg>

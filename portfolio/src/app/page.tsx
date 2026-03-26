@@ -6,6 +6,9 @@ import { useState } from "react";
 import Image from "next/image";
 import profileImg from "../../public/profile.jpg";
 import studentWebImg from "../../public/student-web.jpg";
+import coverMlAgents from "../../public/cover-ml-agents.svg";
+import coverPromptGenius from "../../public/cover-prompt-genius.svg";
+import coverContinue from "../../public/cover-continue.svg";
 
 interface Section {
   title: string;
@@ -204,56 +207,95 @@ const sections: { [key: string]: Section } = {
           </div>
         </motion.a>
 
-        <motion.div 
+        <motion.a 
+          href="https://github.com/Unity-Technologies/ml-agents"
+          target="_blank"
+          rel="noopener noreferrer"
           className="group block relative border-2 border-foreground/10 p-5 rounded-2xl hover:border-foreground/40 transition-all duration-500 bg-background/50 overflow-hidden shadow-sm hover:shadow-xl"
           whileHover={{ y: -8 }}
         >
-          <div className="aspect-[16/10] relative mb-6 overflow-hidden rounded-xl border border-foreground/5 bg-foreground/5 flex items-center justify-center text-foreground/20 italic text-sm">
-            [ Project Preview ]
+          <div className="aspect-[16/10] relative mb-6 overflow-hidden rounded-xl border border-foreground/5 bg-foreground/5">
+            <Image
+              src={coverMlAgents}
+              alt="Unity ML-Agents"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-foreground/10 group-hover:bg-transparent transition-colors duration-500"></div>
           </div>
           <div className="space-y-3">
-            <h3 className="text-2xl font-black tracking-tight">AI 内容创作 Agent</h3>
-            <p className="text-base text-foreground/70 leading-relaxed">基于 Coze 和 Dify 搭建的自动化生产线，集成多模型协作，实现从热点抓取到文章生成的一键化流程。</p>
+            <h3 className="text-2xl font-black tracking-tight flex items-center justify-between">
+              Unity ML‑Agents（AI 游戏训练）
+              <span className="text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0">Visit →</span>
+            </h3>
+            <p className="text-base text-foreground/70 leading-relaxed">在 Unity 环境中使用强化学习训练智能体，包含自定义观察、奖励函数与对抗训练等玩法。</p>
             <div className="flex gap-2 pt-2">
-              <span className="text-[10px] font-bold uppercase tracking-tighter px-2 py-1 border border-foreground/10 rounded-md">Coze</span>
-              <span className="text-[10px] font-bold uppercase tracking-tighter px-2 py-1 border border-foreground/10 rounded-md">Workflow</span>
+              <span className="text-[10px] font-bold uppercase tracking-tighter px-2 py-1 border border-foreground/10 rounded-md">Unity</span>
+              <span className="text-[10px] font-bold uppercase tracking-tighter px-2 py-1 border border-foreground/10 rounded-md">RL</span>
             </div>
           </div>
-        </motion.div>
+        </motion.a>
 
-        <motion.div 
+        <motion.a 
+          href="https://github.com/benf2004/ChatGPT-Prompt-Genius"
+          target="_blank"
+          rel="noopener noreferrer"
           className="group block relative border-2 border-foreground/10 p-5 rounded-2xl hover:border-foreground/40 transition-all duration-500 bg-background/50 overflow-hidden shadow-sm hover:shadow-xl"
           whileHover={{ y: -8 }}
         >
-          <div className="aspect-[16/10] relative mb-6 overflow-hidden rounded-xl border border-foreground/5 bg-foreground/5 flex items-center justify-center text-foreground/20 italic text-sm">
-            [ Project Preview ]
+          <div className="aspect-[16/10] relative mb-6 overflow-hidden rounded-xl border border-foreground/5 bg-foreground/5">
+            <Image
+              src={coverPromptGenius}
+              alt="ChatGPT Prompt Genius"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-foreground/10 group-hover:bg-transparent transition-colors duration-500"></div>
           </div>
           <div className="space-y-3">
-            <h3 className="text-2xl font-black tracking-tight">开发者 RAG 知识库</h3>
-            <p className="text-base text-foreground/70 leading-relaxed">针对特定技术栈优化的检索增强生成系统，显著降低 AI 在处理复杂工程代码时的幻觉率。</p>
+            <h3 className="text-2xl font-black tracking-tight flex items-center justify-between">
+              ChatGPT Prompt Genius（浏览器插件）
+              <span className="text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0">Visit →</span>
+            </h3>
+            <p className="text-base text-foreground/70 leading-relaxed">开源扩展，支持提示词模板化、收藏与分享，适合沉淀个人 Prompt 资产并快速复用。</p>
             <div className="flex gap-2 pt-2">
-              <span className="text-[10px] font-bold uppercase tracking-tighter px-2 py-1 border border-foreground/10 rounded-md">LangChain</span>
-              <span className="text-[10px] font-bold uppercase tracking-tighter px-2 py-1 border border-foreground/10 rounded-md">RAG</span>
+              <span className="text-[10px] font-bold uppercase tracking-tighter px-2 py-1 border border-foreground/10 rounded-md">Chrome</span>
+              <span className="text-[10px] font-bold uppercase tracking-tighter px-2 py-1 border border-foreground/10 rounded-md">Extension</span>
             </div>
           </div>
-        </motion.div>
+        </motion.a>
 
-        <motion.div 
+        <motion.a 
+          href="https://github.com/continuedev/continue"
+          target="_blank"
+          rel="noopener noreferrer"
           className="group block relative border-2 border-foreground/10 p-5 rounded-2xl hover:border-foreground/40 transition-all duration-500 bg-background/50 overflow-hidden shadow-sm hover:shadow-xl"
           whileHover={{ y: -8 }}
         >
-          <div className="aspect-[16/10] relative mb-6 overflow-hidden rounded-xl border border-foreground/5 bg-foreground/5 flex items-center justify-center text-foreground/20 italic text-sm">
-            [ Project Preview ]
+          <div className="aspect-[16/10] relative mb-6 overflow-hidden rounded-xl border border-foreground/5 bg-foreground/5">
+            <Image
+              src={coverContinue}
+              alt="Continue"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-foreground/10 group-hover:bg-transparent transition-colors duration-500"></div>
           </div>
           <div className="space-y-3">
-            <h3 className="text-2xl font-black tracking-tight">RUI--web</h3>
-            <p className="text-base text-foreground/70 leading-relaxed">深度实践 Vibe Coding 理念，完全由自然语言驱动 AI IDE 开发的个人作品集主页。</p>
+            <h3 className="text-2xl font-black tracking-tight flex items-center justify-between">
+              Continue（VS Code AI 辅助编码）
+              <span className="text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0">Visit →</span>
+            </h3>
+            <p className="text-base text-foreground/70 leading-relaxed">开源的本地优先 AI 编程助手，支持多模型与工具链，适合作为插件类作品的二次开发与定制化案例。</p>
             <div className="flex gap-2 pt-2">
-              <span className="text-[10px] font-bold uppercase tracking-tighter px-2 py-1 border border-foreground/10 rounded-md">Next.js</span>
-              <span className="text-[10px] font-bold uppercase tracking-tighter px-2 py-1 border border-foreground/10 rounded-md">Vibe Coding</span>
+              <span className="text-[10px] font-bold uppercase tracking-tighter px-2 py-1 border border-foreground/10 rounded-md">VS Code</span>
+              <span className="text-[10px] font-bold uppercase tracking-tighter px-2 py-1 border border-foreground/10 rounded-md">LLM</span>
             </div>
           </div>
-        </motion.div>
+        </motion.a>
       </div>
     ),
   },

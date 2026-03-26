@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="p" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#1f2937"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#p)"/>
+  <rect x="140" y="160" width="920" height="430" rx="24" fill="#10b981" opacity="0.12"/>
+  <g fill="none" stroke="#34d399" stroke-width="6" opacity="0.9">
+    <path d="M220 270h760M220 330h640M220 390h560M220 450h700"/>
+  </g>
+  <text x="80" y="120" fill="#e5e7eb" font-size="88" font-family="Arial Black, Arial" letter-spacing="1">Prompt Genius</text>
+  <text x="80" y="180" fill="#9ca3af" font-size="36" font-family="Arial">Browser Extension for Prompt Management</text>
+</svg>
