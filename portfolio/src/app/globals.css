@@ -8,7 +8,7 @@
     --primary: #a38f79;
     --secondary: #c7b8a8;
     --accent: #8b7e6a;
-    --bg-image: url("paper-texture.jpg");
+    --bg-image: url("/paper-texture.jpg");
   }
 
   [data-theme="night"] {

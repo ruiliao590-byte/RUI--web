@@ -51,6 +51,15 @@ export function ThemeProvider({
 
   const value = React.useMemo(() => ({ theme, setTheme }), [theme, setTheme]);
 
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    const parts = window.location.pathname.split("/").filter(Boolean);
+    const first = parts[0] || "";
+    const basePrefix = first && first !== "_next" ? `/${first}` : "";
+    const bgUrl = `${basePrefix}/paper-texture.jpg`;
+    document.documentElement.style.setProperty("--bg-image", `url('${bgUrl}')`);
+  }, []);
+
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
