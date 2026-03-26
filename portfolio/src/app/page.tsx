@@ -4,6 +4,8 @@ import { Directory } from "@/components/directory";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
+import profileImg from "../../public/profile.jpg";
+import studentWebImg from "../../public/student-web.jpg";
 
 interface Section {
   title: string;
@@ -123,7 +125,7 @@ const sections: { [key: string]: Section } = {
       <div className="text-left max-w-3xl mx-auto text-lg leading-relaxed">
         <div className="float-left mr-8 mb-4 w-[150px] h-[200px] rounded-md border-2 border-foreground/10 overflow-hidden">
           <Image
-            src="/profile.jpg"
+            src={profileImg}
             alt="Rui的照片"
             width={150}
             height={200}
@@ -179,7 +181,7 @@ const sections: { [key: string]: Section } = {
         >
           <div className="aspect-[16/10] relative mb-6 overflow-hidden rounded-xl border border-foreground/5 bg-foreground/5">
             <Image
-              src="/student-web.jpg" 
+              src={studentWebImg}
               alt="AI 指挥官学习路线图"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"

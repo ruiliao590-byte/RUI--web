@@ -57,7 +57,7 @@ export function ThemeProvider({
     const first = parts[0] || "";
     const basePrefix = first && first !== "_next" ? `/${first}` : "";
     const bgUrl = `${basePrefix}/paper-texture.jpg`;
-    document.documentElement.style.setProperty("--bg-image", `url('${bgUrl}')`);
+    document.documentElement.style.setProperty("--book-bg-image", `url('${bgUrl}')`);
   }, []);
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
