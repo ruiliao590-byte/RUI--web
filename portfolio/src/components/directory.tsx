@@ -31,7 +31,10 @@ export function Directory({ onSectionSelect }: { onSectionSelect: (sectionId: st
                 variants={{ rest: { scaleX: 1 }, hover: { scaleX: 1.03 } }}
                 transition={{ type: "spring", stiffness: 400, damping: 40 }}
               ></motion.span>
-              <span className="font-light text-xl">{section.page}</span>
+              <motion.span 
+                className="font-light text-xl"
+                variants={{ rest: { opacity: 0.6 }, hover: { opacity: 1, scale: 1.1 } }}
+              >{section.page}</motion.span>
             </button>
           </motion.li>
         ))}

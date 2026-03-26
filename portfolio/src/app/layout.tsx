@@ -29,12 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body className={`${notoSerifSc.variable} ${cinzelDecorative.variable}`}>
-        <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="book"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider defaultTheme="book">
           <PageWrapper>{children}</PageWrapper>
         </ThemeProvider>
       </body>

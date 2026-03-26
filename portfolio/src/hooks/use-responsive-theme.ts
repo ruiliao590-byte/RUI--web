@@ -1,30 +1,27 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useTheme } from "@/components/theme-provider";
+import { useEffect } from "react";
 
 export function useResponsiveTheme() {
-  const { setTheme } = useTheme();
-  const [isMounted, setIsMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    if (typeof window === "undefined") return;
 
-  useEffect(() => {
-    if (isMounted) {
-      const handleResize = () => {
-        if (window.innerWidth < 768) {
-          setTheme("newspaper");
-        } else if (window.innerWidth > 1024) {
-          setTheme("book");
-        }
-      };
+    const handleResize = () => {
+      if (theme === "night") return;
 
-      handleResize();
-      window.addEventListener("resize", handleResize);
+      if (window.innerWidth < 768) {
+        setTheme("newspaper");
+      } else if (window.innerWidth > 1024) {
+        setTheme("book");
+      }
+    };
 
-      return () => window.removeEventListener("resize", handleResize);
-    }
-  }, [isMounted, setTheme]);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [setTheme, theme]);
 }

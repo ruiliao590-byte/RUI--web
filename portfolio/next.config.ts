@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
   basePath: isProd ? `/${repo}` : '',
   assetPrefix: isProd ? `/${repo}/` : '',
   reactCompiler: true,
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
