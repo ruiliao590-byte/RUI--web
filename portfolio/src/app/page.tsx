@@ -333,13 +333,34 @@ const sections: { [key: string]: Section } = {
     content: (
       <div className="space-y-12 max-w-2xl mx-auto italic">
         <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
-          AI 不仅仅是一个工具，它更像是一个拥有无限耐心的协作者。在 Vibe Coding 的时代，代码不再是阻碍创意的门槛。
+          AI 不是替代人，而是放大人。真正的差距来自你能否把意图讲清楚、把验收讲清楚、把边界讲清楚。
         </blockquote>
         <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
-          未来的开发者将更多地扮演‘指挥家’的角色，我们需要学习如何更好地传达意图，而不是纠结于语法细节。
+          所有模型能力，最终都落在数据上。好数据不是多，而是可解释、可复现、可迭代。
         </blockquote>
         <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
-          大模型的幻觉本质上是它在尝试连接那些看似不相关的知识点，这种‘创造力’如果引导得当，将是巨大的财富。
+          幻觉不是一个缺点标签，而是一种不确定性输出。关键是把不确定性显式化，并在产品里设计兜底链路。
+        </blockquote>
+        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
+          训练师的价值不在写提示词，而在定义标准答案的形状：字段、约束、反例、失败方式。
+        </blockquote>
+        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
+          评测是模型的指南针。没有可量化的评测，你看到的只是运气好的一次输出。
+        </blockquote>
+        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
+          Agent 的上限取决于工具的下限。工具越稳定、接口越明确，智能体越像一个可靠的同事。
+        </blockquote>
+        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
+          上下文窗口不是记忆，它更像工作台。把长期知识放到检索，把短期状态放到上下文，结构才会稳。
+        </blockquote>
+        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
+          游戏是训练强化学习直觉的好介质：奖励函数是一种价值观，环境约束是一种现实。
+        </blockquote>
+        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
+          自动化标注不只是省时间，更重要的是把一致性写进系统，让团队的共识变成流水线的一部分。
+        </blockquote>
+        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
+          最好的 AI 产品，应该让用户感受到更强的掌控感，而不是更强的魔法感。
         </blockquote>
       </div>
     ),
