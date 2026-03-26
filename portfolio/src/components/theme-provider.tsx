@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-export type Theme = "book" | "newspaper" | "night";
+export type Theme = "book" | "night";
 
 type ThemeContextValue = {
   theme: Theme;
@@ -14,7 +14,7 @@ const ThemeContext = React.createContext<ThemeContextValue | null>(null);
 const STORAGE_KEY = "rui-theme";
 
 function isTheme(value: string | null): value is Theme {
-  return value === "book" || value === "newspaper" || value === "night";
+  return value === "book" || value === "night";
 }
 
 export function ThemeProvider({

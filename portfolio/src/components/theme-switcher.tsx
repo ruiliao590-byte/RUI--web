@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme, type Theme } from "@/components/theme-provider";
-import { Moon, Sun, Newspaper } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
@@ -10,7 +10,7 @@ export function ThemeSwitcher() {
     e.preventDefault();
     e.stopPropagation();
     
-    const themes = ["book", "newspaper", "night"] as const;
+    const themes = ["book", "night"] as const;
     const currentIndex = themes.indexOf((theme || "book") as Theme);
     const nextIndex = (currentIndex + 1) % themes.length;
     const nextTheme = themes[nextIndex];
@@ -19,7 +19,6 @@ export function ThemeSwitcher() {
   };
 
   const currentTheme = theme || "book";
-  const label = currentTheme === "book" ? "书" : currentTheme === "newspaper" ? "报" : "夜";
 
   return (
     <div className="fixed bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-3 z-[9999]">
@@ -33,15 +32,10 @@ export function ThemeSwitcher() {
         type="button"
       >
         <div className="absolute inset-0 rounded-full blur-md bg-foreground/5 group-hover:bg-foreground/10 transition-all"></div>
-        <span className="absolute -top-2 -right-2 text-[10px] font-bold text-foreground/70 bg-background/70 border border-foreground/10 rounded-full w-5 h-5 flex items-center justify-center">
-          {label}
-        </span>
         {currentTheme === "night" ? (
           <Sun className="w-5 h-5 text-foreground relative z-10" />
-        ) : currentTheme === "book" ? (
-          <Moon className="w-5 h-5 text-foreground relative z-10" />
         ) : (
-          <Newspaper className="w-5 h-5 text-foreground relative z-10" />
+          <Moon className="w-5 h-5 text-foreground relative z-10" />
         )}
       </button>
     </div>

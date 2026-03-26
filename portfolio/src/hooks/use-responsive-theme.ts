@@ -12,11 +12,7 @@ export function useResponsiveTheme() {
     const handleResize = () => {
       if (theme === "night") return;
 
-      if (window.innerWidth < 768) {
-        setTheme("newspaper");
-      } else if (window.innerWidth > 1024) {
-        setTheme("book");
-      }
+      setTheme("book");
     };
 
     handleResize();

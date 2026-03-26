@@ -310,10 +310,6 @@ export default function Home() {
   return (
     <main className="container mx-auto px-4 font-serif relative min-h-screen flex flex-col items-center justify-start pt-32">
       <>
-        <div className="fixed inset-0 pointer-events-none theme-lines-newspaper">
-          <div className="absolute top-0 left-1/3 w-px h-full bg-foreground/10"></div>
-          <div className="absolute top-0 left-2/3 w-px h-full bg-foreground/10"></div>
-        </div>
         <div className="fixed inset-0 pointer-events-none theme-lines-book">
           <div className="absolute top-0 left-1/2 -ml-px w-px h-full bg-foreground/10"></div>
         </div>

@@ -10,15 +10,6 @@
     --accent: #8b7e6a;
     --bg-image: url("/paper-texture.jpg");
   }
- 
-  [data-theme="newspaper"] {
-    --background: #f5f1e8;
-    --foreground: #2b2b2b;
-    --primary: #8f816f;
-    --secondary: #cdbfaa;
-    --accent: #6f6659;
-    --bg-image: url("/linen.png");
-  }
 
   [data-theme="night"] {
     --background: #000000;
@@ -39,16 +30,11 @@
     transition: background-color 0.5s ease, color 0.5s ease;
   }
 
-  .theme-lines-book,
-  .theme-lines-newspaper {
+  .theme-lines-book {
     display: none;
   }
 
   [data-theme="book"] .theme-lines-book {
-    display: block;
-  }
-
-  [data-theme="newspaper"] .theme-lines-newspaper {
     display: block;
   }
 }
