@@ -2,7 +2,7 @@
 
 import { Directory } from "@/components/directory";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import profileImg from "../../public/profile.jpg";
 import studentWebImg from "../../public/student-web.jpg";
@@ -121,6 +121,48 @@ function HomeFooter() {
   );
 }
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+function VideoCard({ src, title, desc }: { src: string; title: string; desc: string }) {
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = () => {
+    videoRef.current?.play();
+  };
+  const handleMouseLeave = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.pause();
+    v.currentTime = 0;
+  };
+
+  return (
+    <motion.div
+      whileHover={{ scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 300, damping: 22 }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="border border-foreground/10 rounded-2xl overflow-hidden bg-background/50 hover:border-foreground/30 transition-colors duration-300 shadow-sm hover:shadow-md cursor-pointer"
+    >
+      <div className="aspect-video bg-foreground/5 overflow-hidden">
+        <video
+          ref={videoRef}
+          src={`${BASE}${src}`}
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          preload="metadata"
+        />
+      </div>
+      <div className="px-4 py-3 space-y-1">
+        <p className="font-bold text-sm tracking-tight">{title}</p>
+        <p className="text-xs text-foreground/60 leading-relaxed">{desc}</p>
+      </div>
+    </motion.div>
+  );
+}
+
 function ArchiveContent() {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
@@ -161,26 +203,7 @@ function ArchiveContent() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {videos.map((v) => (
-            <div
-              key={v.src}
-              className="group border border-foreground/10 rounded-2xl overflow-hidden bg-background/50 hover:border-foreground/30 transition-all duration-300 shadow-sm hover:shadow-md"
-            >
-              <div className="aspect-video bg-foreground/5">
-                <video
-                  src={v.src}
-                  controls
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover"
-                  preload="metadata"
-                />
-              </div>
-              <div className="px-4 py-3 space-y-1">
-                <p className="font-bold text-sm tracking-tight">{v.title}</p>
-                <p className="text-xs text-foreground/60 leading-relaxed">{v.desc}</p>
-              </div>
-            </div>
+            <VideoCard key={v.src} src={v.src} title={v.title} desc={v.desc} />
           ))}
         </div>
       </div>
@@ -195,11 +218,13 @@ function ArchiveContent() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {images.map((img) => (
-            <button
+            <motion.button
               key={img.src}
               type="button"
-              onClick={() => setLightboxSrc(img.src)}
-              className="group text-left border border-foreground/10 rounded-xl overflow-hidden bg-background/50 hover:border-foreground/30 transition-all duration-300 shadow-sm hover:shadow-md"
+              whileHover={{ scale: 1.04 }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+              onClick={() => setLightboxSrc(`${BASE}${img.src}`)}
+              className="text-left border border-foreground/10 rounded-xl overflow-hidden bg-background/50 hover:border-foreground/30 transition-colors duration-300 shadow-sm hover:shadow-md"
             >
               <div className="aspect-square relative bg-foreground/5 overflow-hidden">
                 <Image
@@ -207,14 +232,14 @@ function ArchiveContent() {
                   alt={img.title}
                   fill
                   sizes="(min-width: 768px) 33vw, 50vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover"
                 />
               </div>
               <div className="px-3 py-2 space-y-0.5">
                 <p className="font-bold text-xs tracking-tight truncate">{img.title}</p>
                 <p className="text-[10px] text-foreground/50 leading-tight truncate">{img.desc}</p>
               </div>
-            </button>
+            </motion.button>
           ))}
         </div>
       </div>
