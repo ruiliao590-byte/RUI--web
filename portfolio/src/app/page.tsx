@@ -121,6 +121,143 @@ function HomeFooter() {
   );
 }
 
+function ArchiveContent() {
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+
+  const videos = [
+    { src: "/videos/jimeng-1.mp4", title: "即梦 生成 · 一", desc: "流动的光与色彩，AI 对运动美学的第一次探索" },
+    { src: "/videos/jimeng-2.mp4", title: "即梦 生成 · 二", desc: "抽象叙事的视觉实验，色彩在帧间自由涌动" },
+    { src: "/videos/jimeng-3.mp4", title: "即梦 生成 · 三", desc: "粒子与流体的交融，生成式动态的边界探索" },
+    { src: "/videos/jimeng-4.mp4", title: "即梦 生成 · 四", desc: "极简动态构图，AI 对节奏与留白的理解" },
+    { src: "/videos/jimeng-5.mp4", title: "即梦 生成 · 五", desc: "环境光与运动轨迹的诗意捕捉，情绪驱动的画面" },
+    { src: "/videos/jimeng-6.mp4", title: "即梦 生成 · 六", desc: "AI 对时间序列的重构，情绪化的帧间叙事" },
+    { src: "/videos/hailuo-curtain.mp4", title: "海螺 · 窗帘随风", desc: "轻盈的窗帘随风漂移，海螺 AI 生成的静谧瞬间" },
+  ];
+
+  const images = [
+    { src: "/images/img-01-moebius.png", title: "Moebius 极繁主义", desc: "非对称构图 · Jean Giraud 风格" },
+    { src: "/images/img-02-rabbit.png", title: "拟人化小兔", desc: "日常快照风格 · 随机构图" },
+    { src: "/images/img-03-forest.png", title: "印象派原始森林", desc: "广角对称构图 · 印象派色调" },
+    { src: "/images/img-04-dumbo.png", title: "SMALL DUMBO", desc: "Q版3D IP · 浅蓝小象全案设计" },
+    { src: "/images/img-05-poster.png", title: "日系极简海报", desc: "丝网印刷 · 极简留白" },
+    { src: "/images/img-06-persimmon.png", title: "钢笔柿子精描", desc: "点线技法 · 绿橙双色" },
+    { src: "/images/img-07-miro-pop.png", title: "米罗波普解构", desc: "极繁主义 · 胡安·米罗风格" },
+    { src: "/images/img-08-abstract.png", title: "复古未来主义", desc: "梦幻渐变 · 弥散超现实" },
+    { src: "/images/img-09-explorer.png", title: "远古骸骨探险", desc: "原始森林 · 蛇颈龙化石" },
+    { src: "/images/img-10-doodle.png", title: "Mr Doodle 狗狗", desc: "黑白涂鸦 · 密铺插画" },
+    { src: "/images/img-11-vector.png", title: "矢量版画粉紫", desc: "噪点肌理 · 高对比反差" },
+    { src: "/images/img-12-tomato.png", title: "扁平化番茄", desc: "几何插画 · 明快色彩" },
+  ];
+
+  return (
+    <div className="space-y-16">
+      {/* 视频 */}
+      <div>
+        <div className="flex items-center gap-4 mb-8">
+          <span className="text-xs font-bold uppercase tracking-widest text-foreground/40">01</span>
+          <h3 className="text-xl font-bold tracking-wide">视频</h3>
+          <div className="flex-1 border-t border-foreground/10" />
+          <span className="text-xs text-foreground/40 tracking-wider">AI Generated</span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {videos.map((v) => (
+            <div
+              key={v.src}
+              className="group border border-foreground/10 rounded-2xl overflow-hidden bg-background/50 hover:border-foreground/30 transition-all duration-300 shadow-sm hover:shadow-md"
+            >
+              <div className="aspect-video bg-foreground/5">
+                <video
+                  src={v.src}
+                  controls
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
+                  preload="metadata"
+                />
+              </div>
+              <div className="px-4 py-3 space-y-1">
+                <p className="font-bold text-sm tracking-tight">{v.title}</p>
+                <p className="text-xs text-foreground/60 leading-relaxed">{v.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 图片 */}
+      <div>
+        <div className="flex items-center gap-4 mb-8">
+          <span className="text-xs font-bold uppercase tracking-widest text-foreground/40">02</span>
+          <h3 className="text-xl font-bold tracking-wide">图片</h3>
+          <div className="flex-1 border-t border-foreground/10" />
+          <span className="text-xs text-foreground/40 tracking-wider">AI Generated</span>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {images.map((img) => (
+            <button
+              key={img.src}
+              type="button"
+              onClick={() => setLightboxSrc(img.src)}
+              className="group text-left border border-foreground/10 rounded-xl overflow-hidden bg-background/50 hover:border-foreground/30 transition-all duration-300 shadow-sm hover:shadow-md"
+            >
+              <div className="aspect-square relative bg-foreground/5 overflow-hidden">
+                <Image
+                  src={img.src}
+                  alt={img.title}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 50vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="px-3 py-2 space-y-0.5">
+                <p className="font-bold text-xs tracking-tight truncate">{img.title}</p>
+                <p className="text-[10px] text-foreground/50 leading-tight truncate">{img.desc}</p>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* 灯箱 */}
+      <AnimatePresence>
+        {lightboxSrc && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={() => setLightboxSrc(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25 }}
+              className="relative max-w-4xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={lightboxSrc}
+                alt="放大预览"
+                className="w-full max-h-[85vh] object-contain rounded-xl"
+              />
+              <button
+                type="button"
+                onClick={() => setLightboxSrc(null)}
+                className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors text-xl leading-none"
+              >
+                ×
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 const sections: { [key: string]: Section } = {
   about: {
     title: "I. 关于",
@@ -367,26 +504,7 @@ const sections: { [key: string]: Section } = {
   },
   archive: {
     title: "IV. 归档",
-    content: (
-      <div className="bg-gray-800 text-green-400 p-6 rounded-lg font-mono text-sm shadow-xl overflow-hidden relative">
-        <div className="absolute top-0 right-0 p-2 opacity-20 pointer-events-none">SYSTEM READY</div>
-        <pre className="whitespace-pre-wrap"><code>{
-`// AI 核心术语索引 v1.0.4
-{
-  "Tokens": "大模型处理文本的基本单位，通常 1k tokens 约等于 750 个英文单词。",
-  "RAG": "检索增强生成 (Retrieval-Augmented Generation)，通过外接实时数据库减少幻觉。",
-  "SFT": "监督微调 (Supervised Fine-Tuning)，让模型学会特定指令格式的关键步骤。",
-  "RLHF": "人类反馈强化学习，使模型价值观与人类对齐的核心技术。",
-  "Prompt_Eng": "提示词工程，通过精细化的指令设计激发模型的潜在能力。",
-  "Agent": "智能体，具备自主规划、工具调用和记忆能力的 AI 实体。"
-}
-
-// 状态扫描: [SUCCESS]
-// 核心模块: [ACTIVE]
-// 最近更新: 2026-03-26`
-        }</code></pre>
-      </div>
-    ),
+    content: <ArchiveContent />,
   },
 };
 
@@ -415,7 +533,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
-            className="w-full max-w-3xl mx-auto p-8 relative"
+            className={`w-full ${activeSection === "archive" ? "max-w-5xl" : "max-w-3xl"} mx-auto p-8 relative`}
           >
             <button onClick={handleGoBack} className="absolute top-8 left-8 text-sm text-foreground/70 hover:text-foreground hover:underline">← 返回目录</button>
             <h2 className="text-5xl font-bold mb-12 text-center">{sections[activeSection].title}</h2>
