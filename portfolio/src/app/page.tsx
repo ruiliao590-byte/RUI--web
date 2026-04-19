@@ -127,11 +127,15 @@ function VideoCard({ src, title, desc }: { src: string; title: string; desc: str
   const videoRef = React.useRef<HTMLVideoElement>(null);
 
   const handleMouseEnter = () => {
-    videoRef.current?.play();
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = false;
+    v.play();
   };
   const handleMouseLeave = () => {
     const v = videoRef.current;
     if (!v) return;
+    v.muted = true;
     v.pause();
     v.currentTime = 0;
   };
@@ -165,13 +169,13 @@ function ArchiveContent() {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
   const videos = [
-    { src: "/videos/jimeng-1.mp4", title: "即梦 生成 · 一", desc: "流动的光与色彩，AI 对运动美学的第一次探索" },
-    { src: "/videos/jimeng-2.mp4", title: "即梦 生成 · 二", desc: "抽象叙事的视觉实验，色彩在帧间自由涌动" },
-    { src: "/videos/jimeng-3.mp4", title: "即梦 生成 · 三", desc: "粒子与流体的交融，生成式动态的边界探索" },
-    { src: "/videos/jimeng-4.mp4", title: "即梦 生成 · 四", desc: "极简动态构图，AI 对节奏与留白的理解" },
-    { src: "/videos/jimeng-5.mp4", title: "即梦 生成 · 五", desc: "环境光与运动轨迹的诗意捕捉，情绪驱动的画面" },
-    { src: "/videos/jimeng-6.mp4", title: "即梦 生成 · 六", desc: "AI 对时间序列的重构，情绪化的帧间叙事" },
-    { src: "/videos/hailuo-curtain.mp4", title: "海螺 · 窗帘随风", desc: "轻盈的窗帘随风漂移，海螺 AI 生成的静谧瞬间" },
+    { src: "/videos/jimeng-1.mp4", title: "光影漂移", desc: "粒子与光在暗域中自由飘散，呈现一种无重力的静谧" },
+    { src: "/videos/jimeng-2.mp4", title: "形态溶解", desc: "固态轮廓在帧间缓缓液化，边界消失于抽象的过渡中" },
+    { src: "/videos/jimeng-3.mp4", title: "色域穿越", desc: "从冷蓝到暖橙的渐变横扫画面，如同星云在时间轴上蔓延" },
+    { src: "/videos/jimeng-4.mp4", title: "几何呼吸", desc: "平面图形在三维空间中收缩与伸展，节律感油然而生" },
+    { src: "/videos/jimeng-5.mp4", title: "材质相变", desc: "玻璃、金属与流体在同一画面交替显现，探索物质的临界状态" },
+    { src: "/videos/jimeng-6.mp4", title: "节奏切片", desc: "快切与慢动作交错剪辑，将时间本身变成可见的鼓点" },
+    { src: "/videos/hailuo-curtain.mp4", title: "织物风语", desc: "薄纱随气流轻轻起伏，光线穿透织物投下柔和光晕" },
   ];
 
   const images = [
@@ -492,37 +496,103 @@ const sections: { [key: string]: Section } = {
   thoughts: {
     title: "III. 随想",
     content: (
-      <div className="space-y-12 max-w-2xl mx-auto italic">
-        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
-          AI 不是替代人，而是放大人。真正的差距来自你能否把意图讲清楚、把验收讲清楚、把边界讲清楚。
-        </blockquote>
-        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
-          所有模型能力，最终都落在数据上。好数据不是多，而是可解释、可复现、可迭代。
-        </blockquote>
-        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
-          幻觉不是一个缺点标签，而是一种不确定性输出。关键是把不确定性显式化，并在产品里设计兜底链路。
-        </blockquote>
-        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
-          训练师的价值不在写提示词，而在定义标准答案的形状：字段、约束、反例、失败方式。
-        </blockquote>
-        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
-          评测是模型的指南针。没有可量化的评测，你看到的只是运气好的一次输出。
-        </blockquote>
-        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
-          Agent 的上限取决于工具的下限。工具越稳定、接口越明确，智能体越像一个可靠的同事。
-        </blockquote>
-        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
-          上下文窗口不是记忆，它更像工作台。把长期知识放到检索，把短期状态放到上下文，结构才会稳。
-        </blockquote>
-        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
-          游戏是训练强化学习直觉的好介质：奖励函数是一种价值观，环境约束是一种现实。
-        </blockquote>
-        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
-          自动化标注不只是省时间，更重要的是把一致性写进系统，让团队的共识变成流水线的一部分。
-        </blockquote>
-        <blockquote className="text-2xl border-l-4 border-foreground/20 pl-6 py-2">
-          最好的 AI 产品，应该让用户感受到更强的掌控感，而不是更强的魔法感。
-        </blockquote>
+      <div className="space-y-16">
+        {/* 高阶提示词 */}
+        <div>
+          <div className="flex items-center gap-4 mb-8">
+            <span className="text-xs font-bold uppercase tracking-widest text-foreground/40">01</span>
+            <h3 className="text-xl font-bold tracking-wide">高阶提示词</h3>
+            <div className="flex-1 border-t border-foreground/10" />
+            <a href="https://www.aishort.top" target="_blank" rel="noopener noreferrer" className="text-xs text-foreground/40 tracking-wider hover:text-foreground/70 transition-colors">AI Short →</a>
+          </div>
+          <div className="space-y-4">
+            {[
+              {
+                en: "As a writing improvement assistant, improve the spelling, grammar, clarity, concision, and overall readability of the text, while breaking down long sentences and reducing repetition.",
+                zh: "写作提升助理 · 纠正语法、精炼结构，将冗长段落拆解为清晰可读的表达",
+              },
+              {
+                en: "Act as an English translator and improver. Detect the language, translate it and answer in the corrected and improved version of my text, in English.",
+                zh: "英语翻译优化 · 多语言输入、高质量英文输出，全面提升语句的文学性",
+              },
+              {
+                en: "Act as a professional spelling and grammar corrector. Replace my simplified words and sentences with more beautiful and elegant, upper level English in the style of the journal Nature.",
+                zh: "Nature 风格润色 · 以顶刊审稿标准精炼学术英文，词汇与句式全面升维",
+              },
+              {
+                en: "Act as a prompt generator for Midjourney AI. Provide detailed and creative descriptions that will inspire unique images, rich in visual texture and compositional guidance.",
+                zh: "Midjourney 提示生成器 · 生成包含构图、光线、材质的专业 AI 绘画指令",
+              },
+              {
+                en: "Act as a Socratic teacher. Use probing questions to help the student discover the answer themselves rather than giving it directly. Encourage critical thinking at each step.",
+                zh: "苏格拉底式教学 · 通过追问引导自主推理，培养批判性思维而非直接给出答案",
+              },
+              {
+                en: "Act as a code reviewer. Analyze the code for bugs, performance issues, security vulnerabilities, and style inconsistencies. Provide specific, actionable suggestions with explanations.",
+                zh: "代码审查专家 · 识别 Bug、性能瓶颈与安全漏洞，给出可落地的改进建议",
+              },
+              {
+                en: "Act as an experienced product manager. Help define product requirements, create user stories, prioritize features using MoSCoW, and identify potential risks in the roadmap.",
+                zh: "产品经理思维 · 需求定义、功能优先级排序与风险评估的结构化方法",
+              },
+              {
+                en: "Act as a data analyst. Examine the provided data, identify patterns, outliers, and trends, then present actionable insights in a clear, structured format with supporting evidence.",
+                zh: "数据分析师 · 挖掘规律与异常值，将原始数据转化为可行的决策依据",
+              },
+              {
+                en: "Act as a technical documentation writer. Create clear and well-structured documentation for the given code or system. Include usage examples, parameters, return values, and edge cases.",
+                zh: "技术文档写作 · 将代码与系统逻辑转化为开发者可直接使用的规范文档",
+              },
+              {
+                en: "Act as a UX research analyst. Evaluate the described interface, identify usability pain points, and recommend improvements based on cognitive load theory and user behavior patterns.",
+                zh: "UX 研究分析 · 基于认知负荷理论评估界面可用性，提出以用户行为为中心的优化方案",
+              },
+            ].map((p, i) => (
+              <div key={i} className="border border-foreground/10 rounded-xl p-5 bg-background/50 hover:border-foreground/25 transition-colors duration-300">
+                <p className="font-mono text-xs text-foreground/50 leading-relaxed mb-3 tracking-wide">{p.en}</p>
+                <p className="text-sm font-medium text-foreground/80">{p.zh}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Skills */}
+        <div>
+          <div className="flex items-center gap-4 mb-8">
+            <span className="text-xs font-bold uppercase tracking-widest text-foreground/40">02</span>
+            <h3 className="text-xl font-bold tracking-wide">Skills</h3>
+            <div className="flex-1 border-t border-foreground/10" />
+            <a href="https://skillstore.io" target="_blank" rel="noopener noreferrer" className="text-xs text-foreground/40 tracking-wider hover:text-foreground/70 transition-colors">Skillstore →</a>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { icon: "📚", name: "picture-book-wizard", desc: "双语绘本创作 · 18种视觉风格，适合3-12岁儿童", href: "https://skillstore.io/skills/picture-book-wizard" },
+              { icon: "📋", name: "project-planner", desc: "软件项目规划 · 需求文档、系统设计与任务拆解", href: "https://skillstore.io/skills/project-planner" },
+              { icon: "🔒", name: "vibe-security", desc: "代码安全扫描 · 检测 SQL 注入、XSS 等多语言漏洞", href: "https://skillstore.io/skills/zhanlincui-vibe-security" },
+              { icon: "⚡", name: "frontend-dev-guidelines", desc: "Next.js 15 最佳实践 · React 19 + TypeScript + Tailwind", href: "https://skillstore.io/skills/frontend-dev-guidelines" },
+              { icon: "🧪", name: "tdd", desc: "测试驱动开发 · 先写失败测试，再实现功能的工程方法论", href: "https://skillstore.io/skills/mattpocock-tdd" },
+              { icon: "🏭", name: "industrial-brutalist-ui", desc: "工业粗野主义 UI · 瑞士字体与军事终端美学的融合设计", href: "https://skillstore.io/skills/leonxlnx-industrial-brutalist-ui" },
+              { icon: "🎬", name: "pexoai-agent", desc: "AI 视频生成 · 文本/图像转 5-120 秒视频的自动化流水线", href: "https://skillstore.io/skills/pexoai-pexoai-agent" },
+              { icon: "🔧", name: "develop-userscripts", desc: "浏览器脚本开发 · GM API 与 Tampermonkey 运行时差异指南", href: "https://skillstore.io/skills/xixu-me-develop-userscripts" },
+              { icon: "🏗️", name: "web-artifacts-builder", desc: "React 快速脚手架 · TypeScript + Tailwind + 40+ shadcn/ui 组件", href: "https://skillstore.io/skills/zhanlincui-web-artifacts-builder" },
+              { icon: "✨", name: "vercel-react-view-transitions", desc: "页面转场动画 · View Transitions API 与共享元素动画实现", href: "https://skillstore.io/skills/vercel-labs-vercel-react-view-transitions" },
+            ].map((s) => (
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-4 border border-foreground/10 rounded-xl p-4 bg-background/50 hover:border-foreground/30 hover:shadow-md transition-all duration-300 group"
+              >
+                <span className="text-2xl shrink-0 mt-0.5">{s.icon}</span>
+                <div className="min-w-0">
+                  <p className="font-mono text-xs font-bold tracking-tight text-foreground/70 group-hover:text-foreground transition-colors truncate">{s.name}</p>
+                  <p className="text-xs text-foreground/55 leading-relaxed mt-1">{s.desc}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     ),
   },
@@ -557,7 +627,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
-            className={`w-full ${activeSection === "archive" ? "max-w-5xl" : "max-w-3xl"} mx-auto p-8 relative`}
+            className={`w-full ${activeSection === "archive" || activeSection === "thoughts" ? "max-w-5xl" : "max-w-3xl"} mx-auto p-8 relative`}
           >
             <button onClick={handleGoBack} className="absolute top-8 left-8 text-sm text-foreground/70 hover:text-foreground hover:underline">← 返回目录</button>
             <h2 className="text-5xl font-bold mb-12 text-center">{sections[activeSection].title}</h2>
