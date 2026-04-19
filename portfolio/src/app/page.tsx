@@ -58,7 +58,7 @@ function HomeFooter() {
           <div className="flex items-center gap-6 text-sm tracking-wider">
             <button
               type="button"
-              onClick={() => setEmailRevealed(true)}
+              onClick={() => setEmailRevealed((v) => !v)}
               className="hover:opacity-70 transition-opacity"
             >
               {emailRevealed ? "1098239503@qq.com" : "电子邮件"}
@@ -497,10 +497,48 @@ const sections: { [key: string]: Section } = {
     title: "III. 随想",
     content: (
       <div className="space-y-16">
-        {/* 高阶提示词 */}
+        {/* Skills */}
         <div>
           <div className="flex items-center gap-4 mb-8">
             <span className="text-xs font-bold uppercase tracking-widest text-foreground/40">01</span>
+            <h3 className="text-xl font-bold tracking-wide">Skills</h3>
+            <div className="flex-1 border-t border-foreground/10" />
+            <a href="https://skillstore.io" target="_blank" rel="noopener noreferrer" className="text-xs text-foreground/40 tracking-wider hover:text-foreground/70 transition-colors">Skillstore →</a>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { icon: "📚", name: "picture-book-wizard", desc: "双语绘本创作 · 18种视觉风格，适合3-12岁儿童", href: "https://skillstore.io/skills/picture-book-wizard" },
+              { icon: "📋", name: "project-planner", desc: "软件项目规划 · 需求文档、系统设计与任务拆解", href: "https://skillstore.io/skills/project-planner" },
+              { icon: "🔒", name: "vibe-security", desc: "代码安全扫描 · 检测 SQL 注入、XSS 等多语言漏洞", href: "https://skillstore.io/skills/zhanlincui-vibe-security" },
+              { icon: "⚡", name: "frontend-dev-guidelines", desc: "Next.js 15 最佳实践 · React 19 + TypeScript + Tailwind", href: "https://skillstore.io/skills/frontend-dev-guidelines" },
+              { icon: "🧪", name: "tdd", desc: "测试驱动开发 · 先写失败测试，再实现功能的工程方法论", href: "https://skillstore.io/skills/mattpocock-tdd" },
+              { icon: "🏭", name: "industrial-brutalist-ui", desc: "工业粗野主义 UI · 瑞士字体与军事终端美学的融合设计", href: "https://skillstore.io/skills/leonxlnx-industrial-brutalist-ui" },
+              { icon: "🎬", name: "pexoai-agent", desc: "AI 视频生成 · 文本/图像转 5-120 秒视频的自动化流水线", href: "https://skillstore.io/skills/pexoai-pexoai-agent" },
+              { icon: "🔧", name: "develop-userscripts", desc: "浏览器脚本开发 · GM API 与 Tampermonkey 运行时差异指南", href: "https://skillstore.io/skills/xixu-me-develop-userscripts" },
+              { icon: "🏗️", name: "web-artifacts-builder", desc: "React 快速脚手架 · TypeScript + Tailwind + 40+ shadcn/ui 组件", href: "https://skillstore.io/skills/zhanlincui-web-artifacts-builder" },
+              { icon: "✨", name: "vercel-react-view-transitions", desc: "页面转场动画 · View Transitions API 与共享元素动画实现", href: "https://skillstore.io/skills/vercel-labs-vercel-react-view-transitions" },
+            ].map((s) => (
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-4 border border-foreground/10 rounded-xl p-4 bg-background/50 hover:border-foreground/30 hover:shadow-md transition-all duration-300 group"
+              >
+                <span className="text-2xl shrink-0 mt-0.5">{s.icon}</span>
+                <div className="min-w-0">
+                  <p className="font-mono text-xs font-bold tracking-tight text-foreground/70 group-hover:text-foreground transition-colors truncate">{s.name}</p>
+                  <p className="text-xs text-foreground/55 leading-relaxed mt-1">{s.desc}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* 高阶提示词 */}
+        <div>
+          <div className="flex items-center gap-4 mb-8">
+            <span className="text-xs font-bold uppercase tracking-widest text-foreground/40">02</span>
             <h3 className="text-xl font-bold tracking-wide">高阶提示词</h3>
             <div className="flex-1 border-t border-foreground/10" />
             <a href="https://www.aishort.top" target="_blank" rel="noopener noreferrer" className="text-xs text-foreground/40 tracking-wider hover:text-foreground/70 transition-colors">AI Short →</a>
@@ -552,44 +590,6 @@ const sections: { [key: string]: Section } = {
                 <p className="font-mono text-xs text-foreground/50 leading-relaxed mb-3 tracking-wide">{p.en}</p>
                 <p className="text-sm font-medium text-foreground/80">{p.zh}</p>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Skills */}
-        <div>
-          <div className="flex items-center gap-4 mb-8">
-            <span className="text-xs font-bold uppercase tracking-widest text-foreground/40">02</span>
-            <h3 className="text-xl font-bold tracking-wide">Skills</h3>
-            <div className="flex-1 border-t border-foreground/10" />
-            <a href="https://skillstore.io" target="_blank" rel="noopener noreferrer" className="text-xs text-foreground/40 tracking-wider hover:text-foreground/70 transition-colors">Skillstore →</a>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              { icon: "📚", name: "picture-book-wizard", desc: "双语绘本创作 · 18种视觉风格，适合3-12岁儿童", href: "https://skillstore.io/skills/picture-book-wizard" },
-              { icon: "📋", name: "project-planner", desc: "软件项目规划 · 需求文档、系统设计与任务拆解", href: "https://skillstore.io/skills/project-planner" },
-              { icon: "🔒", name: "vibe-security", desc: "代码安全扫描 · 检测 SQL 注入、XSS 等多语言漏洞", href: "https://skillstore.io/skills/zhanlincui-vibe-security" },
-              { icon: "⚡", name: "frontend-dev-guidelines", desc: "Next.js 15 最佳实践 · React 19 + TypeScript + Tailwind", href: "https://skillstore.io/skills/frontend-dev-guidelines" },
-              { icon: "🧪", name: "tdd", desc: "测试驱动开发 · 先写失败测试，再实现功能的工程方法论", href: "https://skillstore.io/skills/mattpocock-tdd" },
-              { icon: "🏭", name: "industrial-brutalist-ui", desc: "工业粗野主义 UI · 瑞士字体与军事终端美学的融合设计", href: "https://skillstore.io/skills/leonxlnx-industrial-brutalist-ui" },
-              { icon: "🎬", name: "pexoai-agent", desc: "AI 视频生成 · 文本/图像转 5-120 秒视频的自动化流水线", href: "https://skillstore.io/skills/pexoai-pexoai-agent" },
-              { icon: "🔧", name: "develop-userscripts", desc: "浏览器脚本开发 · GM API 与 Tampermonkey 运行时差异指南", href: "https://skillstore.io/skills/xixu-me-develop-userscripts" },
-              { icon: "🏗️", name: "web-artifacts-builder", desc: "React 快速脚手架 · TypeScript + Tailwind + 40+ shadcn/ui 组件", href: "https://skillstore.io/skills/zhanlincui-web-artifacts-builder" },
-              { icon: "✨", name: "vercel-react-view-transitions", desc: "页面转场动画 · View Transitions API 与共享元素动画实现", href: "https://skillstore.io/skills/vercel-labs-vercel-react-view-transitions" },
-            ].map((s) => (
-              <a
-                key={s.name}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-4 border border-foreground/10 rounded-xl p-4 bg-background/50 hover:border-foreground/30 hover:shadow-md transition-all duration-300 group"
-              >
-                <span className="text-2xl shrink-0 mt-0.5">{s.icon}</span>
-                <div className="min-w-0">
-                  <p className="font-mono text-xs font-bold tracking-tight text-foreground/70 group-hover:text-foreground transition-colors truncate">{s.name}</p>
-                  <p className="text-xs text-foreground/55 leading-relaxed mt-1">{s.desc}</p>
-                </div>
-              </a>
             ))}
           </div>
         </div>
