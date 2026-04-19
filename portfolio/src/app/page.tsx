@@ -142,20 +142,18 @@ function VideoCard({ src, title, desc }: { src: string; title: string; desc: str
       transition={{ type: "spring", stiffness: 300, damping: 22 }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="border border-foreground/10 rounded-2xl overflow-hidden bg-background/50 hover:border-foreground/30 transition-colors duration-300 shadow-sm hover:shadow-md cursor-pointer"
+      className="border border-foreground/10 rounded-2xl overflow-hidden bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 shadow-sm hover:shadow-md cursor-pointer"
     >
-      <div className="aspect-video bg-foreground/5 overflow-hidden">
-        <video
-          ref={videoRef}
-          src={`${BASE}${src}`}
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-          preload="metadata"
-        />
-      </div>
-      <div className="px-4 py-3 space-y-1">
+      <video
+        ref={videoRef}
+        src={`${BASE}${src}`}
+        muted
+        loop
+        playsInline
+        className="w-full h-auto block"
+        preload="metadata"
+      />
+      <div className="px-4 py-3 space-y-1 bg-background/50">
         <p className="font-bold text-sm tracking-tight">{title}</p>
         <p className="text-xs text-foreground/60 leading-relaxed">{desc}</p>
       </div>
@@ -224,18 +222,16 @@ function ArchiveContent() {
               whileHover={{ scale: 1.04 }}
               transition={{ type: "spring", stiffness: 300, damping: 22 }}
               onClick={() => setLightboxSrc(`${BASE}${img.src}`)}
-              className="text-left border border-foreground/10 rounded-xl overflow-hidden bg-background/50 hover:border-foreground/30 transition-colors duration-300 shadow-sm hover:shadow-md"
+              className="text-left border border-foreground/10 rounded-xl overflow-hidden bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 shadow-sm hover:shadow-md"
             >
-              <div className="aspect-square relative bg-foreground/5 overflow-hidden">
-                <Image
-                  src={img.src}
-                  alt={img.title}
-                  fill
-                  sizes="(min-width: 768px) 33vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="px-3 py-2 space-y-0.5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`${BASE}${img.src}`}
+                alt={img.title}
+                className="w-full h-auto block"
+                loading="lazy"
+              />
+              <div className="px-3 py-2 space-y-0.5 bg-background/50">
                 <p className="font-bold text-xs tracking-tight truncate">{img.title}</p>
                 <p className="text-[10px] text-foreground/50 leading-tight truncate">{img.desc}</p>
               </div>
