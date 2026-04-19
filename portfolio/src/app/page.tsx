@@ -199,9 +199,11 @@ function ArchiveContent() {
           <div className="flex-1 border-t border-foreground/10" />
           <span className="text-xs text-foreground/40 tracking-wider">AI Generated</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="columns-1 md:columns-2 gap-6 space-y-6">
           {videos.map((v) => (
-            <VideoCard key={v.src} src={v.src} title={v.title} desc={v.desc} />
+            <div key={v.src} className="break-inside-avoid">
+              <VideoCard src={v.src} title={v.title} desc={v.desc} />
+            </div>
           ))}
         </div>
       </div>
@@ -214,28 +216,29 @@ function ArchiveContent() {
           <div className="flex-1 border-t border-foreground/10" />
           <span className="text-xs text-foreground/40 tracking-wider">AI Generated</span>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="columns-2 md:columns-3 gap-4 space-y-4">
           {images.map((img) => (
-            <motion.button
-              key={img.src}
-              type="button"
-              whileHover={{ scale: 1.04 }}
-              transition={{ type: "spring", stiffness: 300, damping: 22 }}
-              onClick={() => setLightboxSrc(`${BASE}${img.src}`)}
-              className="text-left border border-foreground/10 rounded-xl overflow-hidden bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 shadow-sm hover:shadow-md"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={`${BASE}${img.src}`}
-                alt={img.title}
-                className="w-full h-auto block"
-                loading="lazy"
-              />
-              <div className="px-3 py-2 space-y-0.5 bg-background/50">
-                <p className="font-bold text-xs tracking-tight truncate">{img.title}</p>
-                <p className="text-[10px] text-foreground/50 leading-tight truncate">{img.desc}</p>
-              </div>
-            </motion.button>
+            <div key={img.src} className="break-inside-avoid">
+              <motion.button
+                type="button"
+                whileHover={{ scale: 1.04 }}
+                transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                onClick={() => setLightboxSrc(`${BASE}${img.src}`)}
+                className="w-full text-left border border-foreground/10 rounded-xl overflow-hidden bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 shadow-sm hover:shadow-md"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`${BASE}${img.src}`}
+                  alt={img.title}
+                  className="w-full h-auto block"
+                  loading="lazy"
+                />
+                <div className="px-3 py-2 space-y-0.5 bg-background/50">
+                  <p className="font-bold text-xs tracking-tight truncate">{img.title}</p>
+                  <p className="text-[10px] text-foreground/50 leading-tight truncate">{img.desc}</p>
+                </div>
+              </motion.button>
+            </div>
           ))}
         </div>
       </div>
